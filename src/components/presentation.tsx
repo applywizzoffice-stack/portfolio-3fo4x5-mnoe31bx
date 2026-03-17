@@ -4,19 +4,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
 
+import { profile as profileData } from '@/lib/portfolioData';
+
 export function Presentation() {
   // Personal information
-  const profile = {
-    name: 'Raphael Giraud',
-    age: '21 years old',
-    location: 'Paris, France',
-    // Add a newline character after the emoji
-    description:
-      "Hey 👋\nI'm Raph also known as Toukoum. I'm a developer specializing in AI at 42 Paris. I'm working at LightOn AI in Paris. I'm passionate about AI, tech, Entrepreneurship and SaaS tech.",
-    src: '/profil-raph.png',
-    fallbackSrc:
-      'https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3',
-  };
+  const profile = profileData;
 
   // Animation variants for text elements
   const textVariants = {
@@ -96,14 +88,13 @@ export function Presentation() {
             {profile.description}
           </motion.p>
 
-          {/* Tags/Keywords */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.5 }}
             className="mt-4 flex flex-wrap gap-2"
           >
-            {['AI', 'Developer', '42 Paris', 'Sport', 'SaaS Builder'].map(
+            {profile.tags.map(
               (tag) => (
                 <span
                   key={tag}

@@ -17,14 +17,10 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
+import { profile, questions as questionsData } from '@/lib/portfolioData';
+
 /* ---------- quick-question data ---------- */
-const questions = {
-  Me: 'Who are you? I want to know more about you.',
-  Projects: 'What are your projects? What are you working on right now?',
-  Skills: 'What are your skills? Give me a list of your soft and hard skills.',
-  Fun: 'What’s the craziest thing you’ve ever done? What are your hobbies?',
-  Contact: 'How can I contact you?',
-} as const;
+const questions = questionsData;
 
 const questionConfig = [
   { key: 'Me', color: '#329696', icon: Laugh },
@@ -106,10 +102,10 @@ export default function Home() {
         </div>
 
         <h2 className="text-secondary-foreground mt-1 text-xl font-semibold md:text-2xl">
-          Hey, I'm Aaaaby 👋
+          Hey, I'm {profile.name.split(' ')[0]} 👋
         </h2>
         <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-          AI Engineer
+          {profile.title}
         </h1>
       </motion.div>
 

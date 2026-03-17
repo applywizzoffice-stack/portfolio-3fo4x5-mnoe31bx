@@ -4,17 +4,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDownToLine, Download, Eye, File } from 'lucide-react';
 import Image from 'next/image';
+import { resume as resumeDetailsRaw } from '@/lib/portfolioData';
 
 export function Resume() {
   // Resume details
   const resumeDetails = {
-    title: "Raphael's Resume",
-    description: 'Full Stack Developer • AI Specialist',
-    fileType: 'PDF',
-    lastUpdated: 'March 2025',
-    fileSize: '0.5 MB',
-    previewImageSrc: '/resume_giraud_preview.png',
-    downloadUrl: '/resume_giraud.pdf',
+    ...resumeDetailsRaw,
+    previewImageSrc: resumeDetailsRaw.previewImage,
   };
 
   const handleDownload = () => {

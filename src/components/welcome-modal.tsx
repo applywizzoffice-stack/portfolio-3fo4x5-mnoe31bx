@@ -13,6 +13,7 @@ import { X } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation'; // Importation correcte pour Next.js 13+
 import { useState } from 'react';
+import { profile, branding } from '@/lib/portfolioData';
 
 // Added a trigger prop to accept custom triggers
 interface WelcomeModalProps {
@@ -37,7 +38,7 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
         alt="Logo"
         className="w-6 md:w-8"
       />
-      <span className="sr-only">About Toukoum</span>
+      <span className="sr-only">About {profile.name.split(' ')[0]}</span>
     </Button>
   );
 
@@ -69,7 +70,7 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
             <DialogHeader className="relative flex flex-row items-start justify-between px-8 pt-8 pb-6">
               <div>
                 <DialogTitle className="flex items-center gap-2 text-4xl font-bold tracking-tight">
-                  Welcome to AI Portfolio
+                  {branding.welcomeTitle}
                 </DialogTitle>
                 <DialogDescription className="mt-2 text-base">
                   {/*My interactive AI portfolio experience*/}
@@ -92,30 +93,23 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
                 {/* What section */}
                 <div className="space-y-3">
                   <h3 className="text-primary flex items-center gap-2 text-xl font-semibold">
-                    What's ????
+                    {branding.welcomeSectionWhat}
                   </h3>
-                  <p className="text-accent-foreground text-base leading-relaxed">
-                    I'm so excited to present my{' '}
-                    <strong>brand new AI Portfolio.</strong>
-                    <br /> Whether you're a recruiter, a friend, family member,
-                    or just curious, feel free to ask anything you want!
-                  </p>
+                  <div 
+                    className="text-accent-foreground text-base leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: branding.welcomeTextWhat }}
+                  />
                 </div>
 
                 {/* Why section */}
                 <div className="space-y-3">
                   <h3 className="text-primary flex items-center gap-2 text-xl font-semibold">
-                    Why ???
+                    {branding.welcomeSectionWhy}
                   </h3>
-                  <p className="text-accent-foreground text-base leading-relaxed">
-                    Traditional portfolios can be limiting. <br /> They can't
-                    adapt to every visitor's specific needs. <br /> My portfolio
-                    becomes{' '}
-                    <strong>
-                      exactly what you're interested in knowing about me and my
-                      work.
-                    </strong>
-                  </p>
+                  <div 
+                    className="text-accent-foreground text-base leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: branding.welcomeTextWhy }}
+                  />
                 </div>
               </section>
             </div>

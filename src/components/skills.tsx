@@ -4,81 +4,21 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Code, Cpu, PenTool, Users } from 'lucide-react';
+import { skills as skillsDataRaw } from '@/lib/portfolioData';
 
 const Skills = () => {
-  const skillsData = [
-    {
-      category: 'Frontend Development',
-      icon: <Code className="h-5 w-5" />,
-      skills: [
-        'HTML',
-        'CSS',
-        'JavaScript/TypeScript',
-        'Tailwind CSS',
-        'Bootstrap',
-        'Next.js',
-        'React',
-        'Vercel AI SDK',
-        'Gsap',
-      ],
-      color: 'bg-blue-50 text-blue-600 border border-blue-200',
-    },
-    {
-      category: 'Backend & Systems',
-      icon: <Cpu className="h-5 w-5" />,
-      skills: [
-        'Unix',
-        'C',
-        'C++',
-        'Python',
-        'Typescript',
-        'Git',
-        'GitHub',
-        'Docker',
-        'GCP',
-        'PostgreSQL',
-      ],
-      color: 'bg-emerald-50 text-emerald-600 border border-emerald-200',
-    },
-    {
-      category: 'Design & Creative Tools',
-      icon: <PenTool className="h-5 w-5" />,
-      skills: ['Figma', 'Davinci Code', 'Illustrator', 'Canva', 'Keynote'],
-      color: 'bg-indigo-50 text-indigo-600 border border-indigo-200',
-    },
-    {
-      category: 'Soft Skills',
-      icon: <Users className="h-5 w-5" />,
-      skills: [
-        'Communication',
-        'Problem-Solving',
-        'Adaptability',
-        'Learning Agility',
-        'Teamwork',
-        'Creativity',
-        'Focus',
-      ],
-      color: 'bg-amber-50 text-amber-600 border border-amber-200',
-    },
-    {
-      category: 'AI & Fullstack Engineering',
-      icon: <Cpu className="h-5 w-5" />,
-      skills: [
-        'LLM Providers (ChatGPT, Whisper, Groq, Mistral & Claude)',
-        'AI Agents',
-        'Prompt engineering',
-        'Vector databases (Weaviate, Pinecone)',
-        'RAG (Retrieval-Augmented Generation)',
-        'Tool routing & calling',
-        'Hugging Face Transformers',
-        'Vercel AI SDK',
-        'Supabase',
-        'Prisma',
-        'Next.js',
-      ],
-      color: 'bg-purple-50 text-purple-600 border border-purple-200',
-    },
-  ];
+  const skillsData = skillsDataRaw.map((section) => ({
+    ...section,
+    icon: section.category === 'Frontend Development' ? <Code className="h-5 w-5" /> : 
+           section.category === 'Design & Creative Tools' ? <PenTool className="h-5 w-5" /> :
+           section.category === 'Soft Skills' ? <Users className="h-5 w-5" /> :
+           <Cpu className="h-5 w-5" />,
+    color: section.category === 'Frontend Development' ? 'bg-blue-50 text-blue-600 border border-blue-200' :
+           section.category === 'Backend & Systems' ? 'bg-emerald-50 text-emerald-600 border border-emerald-200' :
+           section.category === 'Design & Creative Tools' ? 'bg-indigo-50 text-indigo-600 border border-indigo-200' :
+           section.category === 'Soft Skills' ? 'bg-amber-50 text-amber-600 border border-amber-200' :
+           'bg-purple-50 text-purple-600 border border-purple-200'
+  }));
 
   // Animation variants
   const containerVariants = {
